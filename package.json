@@ -1,0 +1,25 @@
+{
+  "name": "EthereumAssistant",
+  "version": "1.0.0",
+  "description": "A web extension for blocking ethereum phishing websites.",
+  "main": "blacklists/domains.json",
+  "scripts": {
+    "lint": "eslint js",
+    "lint-fix": "eslint --fix js",
+    "gulp": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Ethereum",
+    "security",
+    "blacklist"
+  ],
+  "author": "Ihor Petrovsky",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  }
+}

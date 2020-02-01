@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EthereumAssistant</title>
+    <link rel="stylesheet" href="css/skyblue.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+</head>
+<body id="ext-EthereumAssistant-popup">
+<div id="content">
+    <h4 class="text-center">EthereumAssistant</h4>
+
+    <a target="_blank" href="https://etherscamdb.info/report/domain/" class="btn btn-sm btn-error"
+       id="ext-EthereumAssistant-report"><img width="16" height="16" src="images/flag.png"> Report a domain</a>
+
+    <br/>
+
+    <div>
+        <ul class="ext-EthereumAssistant-nav ext-EthereumAssistant-nav-tabs" id="ext-EthereumAssistant-tab" role="tablist" style="margin-bottom: 1rem">
+            <li class="ext-EthereumAssistant-nav-item">
+                <a class="ext-EthereumAssistant-nav-link active" id="ext-EthereumAssistant-options-tab" data-toggle="ext-EthereumAssistant-tab" data-duration="350" data-height="true" href="#ext-EthereumAssistant-options" role="tab" aria-controls="ext-EthereumAssistant-options" aria-expanded="true">
+                    Options
+                </a>
+            </li>
+            <li class="ext-EthereumAssistant-nav-item">
+                <a class="ext-EthereumAssistant-nav-link" id="ext-EthereumAssistant-cookies-tab" data-toggle="ext-EthereumAssistant-tab" data-duration="350" data-height="true" href="#ext-EthereumAssistant-cookies" role="tab" aria-controls="ext-EthereumAssistant-cookies" aria-expanded="false">
+                    Cookies
+                </a>
+            </li>
+            <li class="ext-EthereumAssistant-nav-item">
+                <a class="ext-EthereumAssistant-nav-link" id="ext-EthereumAssistant-labels-tab" data-toggle="ext-EthereumAssistant-tab" data-duration="350" data-height="true" href="#ext-EthereumAssistant-labels" role="tab" aria-controls="ext-EthereumAssistant-labels" aria-expanded="false">
+                    Labels
+                </a>
+            </li>
+            <li class="ext-EthereumAssistant-nav-item">
+                <a class="ext-EthereumAssistant-nav-link" id="ext-EthereumAssistant-chain_lookup-tab" data-toggle="ext-EthereumAssistant-tab" data-duration="350" data-height="true" href="#ext-EthereumAssistant-chain_lookup" role="tab" aria-controls="ext-EthereumAssistant-chain_lookup" aria-expanded="false">
+                    Lookup
+                </a>
+            </li>
+        </ul>
+
+        <div class="ext-EthereumAssistant-tab-content" id="ext-EthereumAssistant-tab-content">
+
+            <!-- OPTIONS PANEL -->
+            <div class="ext-EthereumAssistant-tab-pane fade active show" id="ext-EthereumAssistant-options" role="tabpanel" aria-labelledby="ext-EthereumAssistant-options-tab" aria-expanded="true">
+                <label class="fancy-checkbox">
+                    <input type="checkbox" name="ext-EthereumAssistant-show_style" id="ext-EthereumAssistant-show_style">
+                    <span>Highlight Matches</span>
+                </label>
+
+                <label class="fancy-checkbox">
+                    <input type="checkbox" name="ext-EthereumAssistant-perform_address_lookups" id="ext-EthereumAssistant-perform_address_lookups">
+                    <span>Perform address lookups</span> <sup>[<a href="https://github.com/409H/EthereumAssistant/wiki/Address-Lookups" target="_blank">?</a>]</sup>
+                </label>
+
+                <label class="fancy-checkbox">
+                    <input type="checkbox" name="ext-EthereumAssistant-twitter_validation" id="ext-EthereumAssistant-twitter_validation">
+                    <span>Twitter Badges</span> <sup>[<a href="https://github.com/409H/EthereumAssistant/wiki/Twitter-Badges" target="_blank">?</a>]</sup>
+
+                    <a href="https://hive.one/?ref=EthereumAssistant" target="_blank">
+                        <img title="Hive.one has provided a lot of the Twitter accounts that are 'verified'" src="/images/hiveone.png" style="height:25px;width:30px;vertical-align:middle;"/>
+                    </a>
+
+                </label>
+
+                <label class="fancy-checkbox">
+                    <input type="checkbox" name="ext-EthereumAssistant-blacklist_domains" id="ext-EthereumAssistant-blacklist_domains">
+                    <span>Warn of blacklisted domains</span> <sup>[<a href="https://github.com/409H/EthereumAssistant/wiki/Blacklisted-Domains" target="_blank">?</a>]</sup>
+                </label>
+                <div id="ext-EthereumAssistant-blacklist_domains_stats">
+                    <input type="checkbox" name="ext-EthereumAssistant-3rd_party_blacklist_domains" id="ext-EthereumAssistant-3rd_party_blacklist_domains"> Use 3rd party blacklists <br />
+                    <input type="checkbox" name="ext-EthereumAssistant-block_punycode_blacklist_domains" id="ext-EthereumAssistant-block_punycode_blacklist_domains"> Block all punycode domains <br /> <br />
+                    <small>Last updated: <span id="ext-EthereumAssistant-blacklist_domains_last_updated">N/A</span></small>
+                    <br/>
+                    <small>Domains Blacklisted: <span id="ext-EthereumAssistant-blacklist_domains_total_count">0</span>
+                                                (<span id="ext-EthereumAssistant-3p_blacklist_domains_total_count">0</span>)
+                    </small>
+                </div>
+
+                <label>Preferred Blockchain Explorer</label>
+                <select class="form-control" name="ext-EthereumAssistant-choose_blockchain"
+                        id="ext-EthereumAssistant-choose_blockchain">
+                    <optgroup label="Mainnet">
+                        <option data-network="1" value="https://etherscan.io/address">Etherscan.io *</option>
+                        <option data-network="1" value="https://etherchain.org/account">Etherchain.org *</option>
+                        <option data-network="1" value="https://ethplorer.io/address">Ethplorer.io</option>
+                    </optgroup>
+                    <optgroup label="Rinkeby">
+                        <option data-network="4" value="https://rinkeby.etherscan.io/address">Etherscan.io *</option>
+                    </optgroup>
+                    <optgroup label="Ropsten">
+                        <option data-network="3" value="https://ropsten.etherscan.io/address">Etherscan.io *</option>
+                    </optgroup>
+                    <optgroup label="Kovan">
+                        <option data-network="42" value="https://kovan.etherscan.io/address">Etherscan.io *</option>
+                    </optgroup>
+                    <optgroup label="Goerli">
+                        <option data-network="5" value="https://goerli.etherscan.io/address">Etherscan.io *</option>
+                        <option data-network="5" value="https://blockscout.com/eth/goerli">Blockscout</option>
+                    </optgroup>
+                </select>
+                <div class="ext-EthereumAssistant-note">
+                    <small>* ENS address compatible.</small>
+                    <div class="ext-EthereumAssistant-note_network_diff"></div>
+                </div>
+            </div>
+
+            <!-- LABELS PANEL -->
+            <div class="ext-EthereumAssistant-tab-pane fade " id="ext-EthereumAssistant-labels" role="tabpanel" aria-labelledby="ext-EthereumAssistant-labels-tab" aria-expanded="false">
+                <!-- New Label -->
+                <div id="ext-EthereumAssistant-new-labels">
+
+                    <p><b>New Label:</b></p>
+                    <form id="ext-EthereumAssistant-new-label-form">
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="ext-EthereumAssistant-label-name"
+                            id="ext-EthereumAssistant-label-name"
+                            placeholder="Label Name"
+                        />
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="ext-EthereumAssistant-label-address"
+                            id="ext-EthereumAssistant-label-address"
+                            placeholder="ETH Wallet Address"
+                        />
+                        <select
+                            class="form-control"
+                            name="ext-EthereumAssistant-label-color"
+                            id="ext-EthereumAssistant-label-color"
+                        >
+                            <option style="background-color: #dc3545;" value="dc3545">Red</option>
+                            <option style="background-color: #ffad13;" value="ffad13">Orange</option>
+                            <option style="background-color: #ffdc00;" value="ffdc00">Yellow</option>
+                            <option style="background-color: #28a745;" value="28a745">Green</option>
+                            <option style="background-color: #17a2b8;" value="17a2b8">Blue</option>
+                            <option style="background-color: #6634b8;" value="6634b8">Purple</option>
+                            <option style="background-color: #000000;" value="000000">Black</option>
+                            <option style="background-color: #808080;" value="808080">Grey</option>
+                            <option style="background-color: #ffffff;color:#303030;" value="ffffff">White</option>
+                        </select>
+                        <button class="btn btn-success btn-small" type="submit">Save</button>
+                    </form>
+
+                </div>
+
+                <hr/>
+
+                <!-- Existing Labels -->
+                <div>
+                    <p><b>Your Labels:</b></p>
+
+                    <div id="ext-EthereumAssistant-current-labels">
+                        <!-- Populated from storage -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="ext-EthereumAssistant-tab-pane fade " id="ext-EthereumAssistant-chain_lookup" role="tabpanel" aria-labelledby="ext-EthereumAssistant-chain_lookup-tab" aria-expanded="false">
+                <div id="ext-EthereumAssistant-chain_lookup_container">
+                    <h3>Lookups</h3>
+                    <p>Input a transaction hash or an Ethereum address to find out more details about it.</p>
+                    <div id="ext-EthereumAssistant-chain_lookup_details"></div>
+
+                    <br />
+
+                    <form id="ext-EthereumAssistant-chain_lookup_form">
+                        <input class="form-control" type="text" name="ext-EthereumAssistant-addr_or_tx" id="ext-EthereumAssistant-addr_or_tx" placeholder="0x address or tx hash" autocomplete="off" />
+                        <button class="btn btn-success btn-small" type="submit">Lookup</button>
+                    </form>
+
+                    <div id="ext-EthereumAssistant-chain_lookup_output">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="ext-EthereumAssistant-tab-pane fade " id="ext-EthereumAssistant-cookies" role="tabpanel" aria-labelledby="ext-EthereumAssistant-cookies-tab" aria-expanded="false">
+                <div id="ext-EthereumAssistant-cookies_container">
+                    <h3>Cookies</h3>
+                    <p>Protect your browser cookies from surveillance and malicious applications and websites.</p>
+
+                    <br />
+
+                    <form id="ext-EthereumAssistant-cookies_form">
+                        <button class="btn btn-success btn-small" type="submit">Protect your browser cookies</button>
+                    </form>
+
+                    <div id="ext-EthereumAssistant-cookies_output">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="ext-EthereumAssistant-center">
+            <a href="/settings.html" target="_blank">More Settings</a> &mdash;
+        </div>
+
+        <small><strong>Version:</strong> <span id="ext-manifest_version"></span> &mdash; BETA</small>
+        <div id="ext-EthereumAssistant-rpc_node_details" style="display:inline;position:absolute;right:1em;">RPC Network: <span></span></div>
+    </div>
+</div>
+
+<script src="js/app/lib/web3.js"></script>
+<script src="js/app/lib/blockies.js"></script>
+<script src="js/app/toggleMatchHighlight.js"></script>
+<script src="js/app/toggleTwitterValidation.js"></script>
+<script src="js/app/chooseBlockchain.js"></script>
+<script src="js/app/toggleBlacklistDomains.js"></script>
+<script src="js/app/toggleBookmarks.js"></script>
+<script src="/js/app/toggleAddressLookups.js"></script>
+<script src="js/app/lib/nat-twbs-modal-popover.js"></script>
+<script src="js/labels.js"></script>
+<script src="js/options/labels.js"></script>
+<script src="js/chainlookup.js"></script>
+<script src="js/options/chainlookup.js"></script>
+<script src="js/options.js"></script>
+</body>
+</html>
